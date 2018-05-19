@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tv.programmes.controller.ListWindowController">
+  <children>
+    <MenuBar VBox.vgrow="NEVER">
+      <menus>
+        <Menu mnemonicParsing="false" text="Consult">
+          <items>
+            <MenuItem fx:id="channelsButton" mnemonicParsing="false" onAction="#testButton" text="Channels" />
+            <MenuItem fx:id="calendarButton" mnemonicParsing="false" onAction="#testButton" text="Calendar" />
+          </items>
+        </Menu>
+            <Menu mnemonicParsing="false" text="Search">
+              <items>
+                <MenuItem mnemonicParsing="false" text="Find by period" />
+                  <MenuItem mnemonicParsing="false" text="Find by credits" />
+              </items>
+            </Menu>
+        <Menu mnemonicParsing="false" text="Analysis">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="Actors list" />
+                  <MenuItem mnemonicParsing="false" text="Categories list" />
+                  <MenuItem mnemonicParsing="false" text="CSA ratings list" />
+                  <MenuItem mnemonicParsing="false" text="Channels list" />
+               </items>
+        </Menu>
+        <Menu mnemonicParsing="false" text="Help">
+          <items>
+            <MenuItem mnemonicParsing="false" text="About MyHelloApp" />
+          </items>
+        </Menu>
+      </menus>
+    </MenuBar>
+    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
+         <children>
+            <ScrollPane layoutX="300.0" layoutY="24.0" prefHeight="774.4" prefWidth="1280.0" vbarPolicy="ALWAYS" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <content>
+                  <ListView fx:id="list" prefHeight="761.0" prefWidth="1263.0" />
+               </content>
+            </ScrollPane>
+         </children></AnchorPane>
+  </children>
+</VBox>
