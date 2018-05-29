@@ -37,7 +37,7 @@ public class MainWindowController extends Controller{
 			public void handle(Event event) {
 				Button clickedOn = (Button) event.getSource();
 				String buttonText = clickedOn.getText();
-
+				System.out.println("Channel selected");
 				for(Channel c : app.getChannels()){
 					if(c.getName().equals(buttonText)){
                         switchToChannelScene(c, clickedOn.getScene().getWindow());
@@ -51,13 +51,16 @@ public class MainWindowController extends Controller{
 	}
 
 	@FXML
-	protected void initialize(){
-		initializeHandlers();
-		int rowIndex = 0;
-		for(Channel c : app.getChannels()){
-			Button channelButton = new Button(c.getName());
-			gridChannel.add(channelButton, 0, rowIndex);
-			rowIndex++;
+	public void initialize(){
+		if(app != null) {
+			initializeHandlers();
+			int rowIndex = 0;
+			for (Channel c : app.getChannels()) {
+				Button channelButton = new Button(c.getName());
+				channelButton.setOnMouseClicked(channelButtonHandler);
+				gridChannel.add(channelButton, 0, rowIndex);
+				rowIndex++;
+			}
 		}
 	}
 
@@ -69,5 +72,6 @@ public class MainWindowController extends Controller{
     public void switchToChannelScene(Channel channel, Window window){
         Stage stage = (Stage) window;
         stage.setScene(app.getScenes().get("List"));
+        stage.show();
     }
 }

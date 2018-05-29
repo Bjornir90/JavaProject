@@ -64,7 +64,7 @@ public class App {
                             case "programme":
                                 Programmation p = null;
                                 try {
-                                    p = Parser.parseEmission(xmlReader);
+                                    p = Parser.parseEmission(xmlReader, channels);
                                     if(!emissions.contains(p.getEmission())) {
                                         emissions.add(p.getEmission());
                                     }

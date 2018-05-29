@@ -27,14 +27,14 @@ public class ApplicationMain extends Application {
 
 		Controller controller = loader.getController();
 		controller.setApp(app);
+		controller.initialize();
 		app.setCurrentController(controller);
 
 		primaryStage.setTitle("TV programmes");
 		Scene scene = new Scene(panel);
 		app.getScenes().put("MainWindow", scene);
-		Stage stage = new Stage();
-		stage.setScene(scene);
-		stage.show();
+		primaryStage.setScene(scene);
+		primaryStage.show();
 	}
 
 }

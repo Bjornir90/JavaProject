@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 public class Parser {
 
-	public static Programmation parseEmission(XMLStreamReader reader) throws XMLStreamException, InstantiationException{
+	public static Programmation parseEmission(XMLStreamReader reader, ArrayList<Channel> channels) throws XMLStreamException, InstantiationException{
 		String category = null;
 		String title = null;
 		String subtitle = null;
@@ -71,7 +71,7 @@ public class Parser {
 			}
 		}
 		Channel channelInstance = null; //The instance of the channel for this programmation
-		for (Channel c : ApplicationMain.channels){
+		for (Channel c : channels){
 			if(c.getId().equals(channel)){
 				channelInstance = c;
 				break;
@@ -114,4 +114,5 @@ public class Parser {
 		}
 		return c;
 	}
+
 }
