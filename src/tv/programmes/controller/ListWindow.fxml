@@ -8,14 +8,14 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tv.programmes.controller.ListWindowController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tv.programmes.controller.ListWindowController">
   <children>
     <MenuBar VBox.vgrow="NEVER">
       <menus>
         <Menu mnemonicParsing="false" text="Consult">
           <items>
-            <MenuItem fx:id="channelsButton" mnemonicParsing="false" onAction="#testButton" text="Channels" />
-            <MenuItem fx:id="calendarButton" mnemonicParsing="false" onAction="#testButton" text="Calendar" />
+            <MenuItem fx:id="channelsButton" mnemonicParsing="false" text="Channels" />
+            <MenuItem fx:id="calendarButton" mnemonicParsing="false" text="Calendar" />
           </items>
         </Menu>
             <Menu mnemonicParsing="false" text="Search">
