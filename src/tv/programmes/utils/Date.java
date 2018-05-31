@@ -25,6 +25,10 @@ public class Date implements Comparable{
 		}
 	}
 
+	public Date(){
+
+	}
+
 
 	@Override
 	public int compareTo(Object o) {
@@ -81,5 +85,50 @@ public class Date implements Comparable{
 				" " + hour +
 				":" + minute +
 				":" + second;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+
+		Date date = (Date) o;
+
+		if (year != date.year) return false;
+		if (month != date.month) return false;
+		if (day != date.day) return false;
+		if (hour != date.hour) return false;
+		if (minute != date.minute) return false;
+		return second == date.second;
+	}
+
+	@Override
+	public int hashCode() {
+		int result = year;
+		result = 31 * result + month;
+		result = 31 * result + day;
+		result = 31 * result + hour;
+		result = 31 * result + minute;
+		result = 31 * result + second;
+		return result;
+	}
+
+	public String getPrintableDay(){
+		return year + "/"+ month + "/" + day;
+	}
+
+	public boolean isSameDay(Date that){
+		if(year != that.year) return false;
+		if(month != that.month) return false;
+		return day == that.day;
+	}
+
+	public void copyDay(Date date){
+		year = date.year;
+		month = date.month;
+		day = date.day;
+		hour = 0;
+		minute = 0;
+		second = 0;
 	}
 }

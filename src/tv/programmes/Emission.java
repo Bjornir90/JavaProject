@@ -7,7 +7,7 @@ public class Emission {
 	private String category;
 	private String title;
 	private String subtitle;
-	private ArrayList<Role> credits;//keys are role and values are name of person
+	private ArrayList<Role> credits;
 	private String description;
 	private int length;
 	private int yearOfRelease;

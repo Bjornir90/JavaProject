@@ -8,6 +8,7 @@ import javafx.stage.Stage;
 import tv.programmes.controller.Controller;
 import tv.programmes.controller.ListWindowController;
 import tv.programmes.model.ListWindowModel;
+import tv.programmes.utils.Date;
 import tv.programmes.utils.Parser;
 
 import javax.xml.stream.XMLInputFactory;
@@ -28,6 +29,7 @@ public class App {
     private ArrayList<Emission> emissions;
     private HashMap<String, Scene> scenes;
     private HashMap<String, Controller> controllers;
+    private ArrayList<Date> days;
     private Controller currentController;
     private Stage root;
 
@@ -38,6 +40,7 @@ public class App {
         emissions = new ArrayList<>();
         scenes = new HashMap<>();
         controllers = new HashMap<>();
+        days = new ArrayList<>();
 
         XMLInputFactory xmlFactory = XMLInputFactory.newInstance();
         XMLStreamReader xmlReader = null;
@@ -68,16 +71,33 @@ public class App {
                         switch(elementName) {
                             case "programme":
                                 Programmation p = null;
+
                                 try {
                                     p = Parser.parseEmission(xmlReader, channels);
+                                    //Add emission to emissions list only if it isn't already there
                                     if(!emissions.contains(p.getEmission())) {
                                         emissions.add(p.getEmission());
                                     }
                                     p.getChannel().addProgrammation(p);
+
+                                    //Add day of programmation to the days list if it isn't there already
+	                                boolean alreadyExist = false;
+                                    for(Date day : days){
+                                    	if(day.isSameDay(p.getStartDate())) {
+                                    		alreadyExist = true;
+	                                    }
+                                    }
+                                    if(!alreadyExist){
+	                                    Date dayToAdd = new Date();
+	                                    dayToAdd.copyDay(p.getStartDate());
+	                                    days.add(dayToAdd);
+                                    }
+
                                 } catch (InstantiationException e){
                                     e.printStackTrace();
                                     break;
                                 }
+
                                 programmations.add(p);
                                 break;
                             case "channel":
@@ -162,4 +182,9 @@ public class App {
 	public void setRoot(Stage root) {
 		this.root = root;
 	}
+
+	public ArrayList<Date> getDays() {
+		return days;
+	}
+
 }

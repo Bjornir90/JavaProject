@@ -9,6 +9,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.MenuItem;
 import tv.programmes.model.ListWindowModel;
 
+import java.lang.management.MemoryUsage;
 import java.util.ArrayList;
 
 public class ListWindowController extends Controller {
@@ -20,17 +21,22 @@ public class ListWindowController extends Controller {
 	private MenuItem channelsButton;
 	@FXML
 	private MenuItem calendarButton;
+	@FXML
+	private MenuItem actorButton;
+	@FXML
+	private MenuItem categorieButton;
+	@FXML
+	private MenuItem ratingButton;
+	@FXML
+	private MenuItem orderedChannelButton;
 
 
 
     @FXML
     public void initialize(){
-        channelsButton.setOnAction(new EventHandler<ActionEvent>() {
-	        @Override
-	        public void handle(ActionEvent event) {
-		        switchToChannelList();
-	        }
-        });
+        channelsButton.setOnAction(event -> switchToChannelList());
+        calendarButton.setOnAction(event -> switchToCalendar());
+
 
     }
 

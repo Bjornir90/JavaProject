@@ -15,4 +15,8 @@ public class Role {
 	public String getRole() {
 		return role;
 	}
+
+	public boolean isActor(){
+		return role.equals("actor");
+	}
 }

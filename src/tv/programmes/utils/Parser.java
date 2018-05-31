@@ -13,7 +13,7 @@ public class Parser {
 		String category = null;
 		String title = null;
 		String subtitle = null;
-		ArrayList<Role> credits = null;//keys are role and values are name of person
+		ArrayList<Role> credits = new ArrayList<>();//keys are role and values are name of person
 		String description = null;
 		int length = 0, dateOfRelease = 0;
 		String rating = null;
@@ -60,6 +60,33 @@ public class Parser {
 					case "episode-num":
 						isSerie = true;
 						episodeNumberString = reader.getText();
+						break;
+					case "credits":
+						event = reader.next();
+						while(!reader.getLocalName().equals("credits")){
+							String job = null, name = null;
+							job = reader.getLocalName();
+							event = reader.next();
+							name = reader.getText();
+							event = reader.next();//end element
+							event = reader.next();//freaking characters for some reason ??
+							event = reader.next();//start element
+
+							System.out.println("job = " + job);
+							System.out.println("name = " + name);
+							credits.add(new Role(name, job));
+						}
+						/*while(reader.hasNext()){
+							if(event == XMLEvent.START_ELEMENT){
+								System.out.println("Start reader.getLocalName() = " + reader.getLocalName());
+							} else if(event == XMLEvent.CHARACTERS){
+								System.out.println("reader.getText() = " + reader.getText());
+							} else if(event == XMLEvent.END_ELEMENT){
+								if(reader.getLocalName().equals("credits")) break;
+								System.out.println("End reader.getLocalName() = " + reader.getLocalName());
+							}
+							event = reader.next();
+						}*/
 						break;
 					default:
 						break;
