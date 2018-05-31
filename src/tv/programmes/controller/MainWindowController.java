@@ -52,6 +52,12 @@ public class MainWindowController extends Controller{
 
 		};
 
+		channelsButton.setOnAction(event -> switchToChannelList());
+		calendarButton.setOnAction(event -> switchToCalendar());
+		actorButton.setOnAction(event -> switchToActorList());
+		ratingButton.setOnAction(event -> switchToRatingList());
+
+
 
 	}
 
@@ -66,9 +72,7 @@ public class MainWindowController extends Controller{
 				gridChannel.add(channelButton, 0, rowIndex);
 				rowIndex++;
 			}
-			channelsButton.setOnAction(event -> switchToChannelList());
-			calendarButton.setOnAction(event -> switchToCalendar());
-			actorButton.setOnAction(event -> switchToActorList());
+
 		}
 	}
 

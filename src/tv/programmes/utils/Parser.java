@@ -69,12 +69,10 @@ public class Parser {
 							event = reader.next();
 							name = reader.getText();
 							if(name.contains("("))	name = name.substring(0, name.indexOf("("));
-							event = reader.next();//end element
-							event = reader.next();//freaking characters for some reason ??
-							event = reader.next();//start element
+							reader.next();//end element
+							reader.next();//freaking characters for some reason ??
+							reader.next();//start element
 
-							System.out.println("job = " + job);
-							System.out.println("name = " + name);
 							credits.add(new Role(name, job));
 						}
 						/*while(reader.hasNext()){
@@ -88,6 +86,15 @@ public class Parser {
 							}
 							event = reader.next();
 						}*/
+						break;
+					case "rating":
+						event = reader.next();
+						if(event == XMLEvent.START_ELEMENT && reader.getLocalName().equals("value")){
+							reader.next();
+							rating = reader.getText();
+						}
+						reader.next();
+						event = reader.next();
 						break;
 					default:
 						break;

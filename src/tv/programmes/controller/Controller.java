@@ -1,8 +1,6 @@
 package tv.programmes.controller;
 
-import tv.programmes.App;
-import tv.programmes.Emission;
-import tv.programmes.Role;
+import tv.programmes.*;
 import tv.programmes.utils.Date;
 
 import java.util.ArrayList;
@@ -41,11 +39,10 @@ public abstract class Controller {
     	app.setCurrentController(controller);
 	    ArrayList<String> dataToPass = new ArrayList<>();
 	    HashMap<Role, Integer> actors = new HashMap<>();//Contains every actor, the values are the number of times he is credited
-	    Role actorMostCredited = null;//The most credited actor for now, when we go through the HashMap one by one. We start by the first
+	    Role actorMostCredited;//The most credited actor for now, when we go through the HashMap one by one. We start by the first
 	    for(Emission e : app.getEmissions()){
 	    	for(Role role : e.getCredits()){
 	    		if(role.isActor()){
-				    System.out.println("role.getName() = " + role.getName());
 	    			if(actors.containsKey(role)){
 	    				Integer numberOfCredit = actors.get(role);
 	    				numberOfCredit++;
@@ -53,23 +50,48 @@ public abstract class Controller {
 				    } else {
 	    				actors.put(role, 1);
 				    }
-				    System.out.println("actors.get(role) = " + actors.get(role));
 			    }
 		    }
 	    }
-	    while(!actors.isEmpty()) {
+	    while(!actors.isEmpty()) {//TODO optimize reading when the number of emission reach one, since then they are all equals
 	    	actorMostCredited = (Role) actors.keySet().toArray()[0];//get first actor
 		    for (Role role : actors.keySet()) {
-		    	if(role == null) System.out.println("Role is null");
-		    	if(actorMostCredited == null) System.out.println("Actor is null");
-		    	if(actors.get(actorMostCredited) == null) System.out.println("Actor in actors is null");
-		    	if(actors.get(role) == null) System.out.println("Role in actors is null");
 			    if (actors.get(actorMostCredited) < actors.get(role)) {
 				    actorMostCredited = role;
 			    }
 		    }
+		    dataToPass.add(actorMostCredited.getName()+ " appears in "+ actors.get(actorMostCredited) +" emissions");//Finally add the actor name to the data to pass to the model
 		    actors.remove(actorMostCredited);//remove so we can search for the next highest actor
-		    dataToPass.add(actorMostCredited.getName());//Finally add the actor name to the data to pass to the model
+	    }
+	    controller.getModel().setDataList(dataToPass);
+    }
+
+    protected void switchToRatingList(){
+	    app.getRoot().setScene(app.getScenes().get("List"));
+	    ListWindowController controller = (ListWindowController) app.getControllers().get("List");
+	    app.setCurrentController(controller);
+	    ArrayList<String> dataToPass = new ArrayList<>();
+	    HashMap<Channel, HashMap<String, Integer>> numberOfRatings = new HashMap<>();
+
+	    for(Channel c : app.getChannels()){
+	    	HashMap<String, Integer> ratingsForAChannel = new HashMap<>();
+	    	for(Programmation p : c.getProgrammations()){
+	    		String rating = p.getEmission().getRating();
+	    		if(ratingsForAChannel.containsKey(rating)){
+	    			Integer numberOfRating = ratingsForAChannel.get(rating);
+	    			ratingsForAChannel.replace(rating, ++numberOfRating);
+			    } else {
+	    			ratingsForAChannel.put(rating, 1);
+			    }
+		    }
+		    numberOfRatings.put(c, ratingsForAChannel);
+	    }
+
+	    for(Channel c : app.getChannels()){
+	    	dataToPass.add(c.getName());
+	    	for(String rating : numberOfRatings.get(c).keySet()){
+	    		dataToPass.add("\t"+rating+" : "+numberOfRatings.get(c).get(rating));
+		    }
 	    }
 	    controller.getModel().setDataList(dataToPass);
     }
