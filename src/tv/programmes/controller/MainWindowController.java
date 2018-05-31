@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import javafx.stage.Window;
@@ -36,21 +37,19 @@ public class MainWindowController extends Controller{
 	private MenuItem orderedChannelButton;
 
 
+
 	private void initializeHandlers(){
 
-		channelButtonHandler = new EventHandler() {
-			@Override
-			public void handle(Event event) {
-				Button clickedOn = (Button) event.getSource();
-				String buttonText = clickedOn.getText();
-				System.out.println("Channel selected "+buttonText);
-				for(Channel c : app.getChannels()){
-					if(c.getName().equals(buttonText)){
-                        switchToChannelScene(c);
-					}
+		channelButtonHandler = event -> {
+			Button clickedOn = (Button) event.getSource();
+			String buttonText = clickedOn.getText();
+			System.out.println("Channel selected "+buttonText);
+			for(Channel c : app.getChannels()){
+				if(c.getName().equals(buttonText)){
+					switchToChannelScene(c);
 				}
-
 			}
+
 		};
 
 

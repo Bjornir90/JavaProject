@@ -68,6 +68,7 @@ public class Parser {
 							job = reader.getLocalName();
 							event = reader.next();
 							name = reader.getText();
+							if(name.contains("("))	name = name.substring(0, name.indexOf("("));
 							event = reader.next();//end element
 							event = reader.next();//freaking characters for some reason ??
 							event = reader.next();//start element

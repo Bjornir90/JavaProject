@@ -28,10 +28,10 @@
             </Menu>
         <Menu mnemonicParsing="false" text="Analysis">
                <items>
-                  <MenuItem mnemonicParsing="false" text="Actors list" />
-                  <MenuItem mnemonicParsing="false" text="Categories list" />
-                  <MenuItem mnemonicParsing="false" text="CSA ratings list" />
-                  <MenuItem mnemonicParsing="false" text="Channels list" />
+                  <MenuItem fx:id="actorButton" mnemonicParsing="false" text="Actors list" />
+                  <MenuItem fx:id="categorieButton" mnemonicParsing="false" text="Categories list" />
+                  <MenuItem fx:id="ratingButton" mnemonicParsing="false" text="CSA ratings list" />
+                  <MenuItem fx:id="orderedChannelButton" mnemonicParsing="false" text="Channels list" />
                </items>
         </Menu>
         <Menu mnemonicParsing="false" text="Help">
