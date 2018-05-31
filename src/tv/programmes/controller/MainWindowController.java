@@ -26,6 +26,14 @@ public class MainWindowController extends Controller{
 	private MenuItem calendarButton;
 	@FXML
 	private GridPane gridChannel;
+	@FXML
+	private MenuItem actorButton;
+	@FXML
+	private MenuItem categorieButton;
+	@FXML
+	private MenuItem ratingButton;
+	@FXML
+	private MenuItem orderedChannelButton;
 
 
 	private void initializeHandlers(){
@@ -59,6 +67,9 @@ public class MainWindowController extends Controller{
 				gridChannel.add(channelButton, 0, rowIndex);
 				rowIndex++;
 			}
+			channelsButton.setOnAction(event -> switchToChannelList());
+			calendarButton.setOnAction(event -> switchToCalendar());
+			actorButton.setOnAction(event -> switchToActorList());
 		}
 	}
 

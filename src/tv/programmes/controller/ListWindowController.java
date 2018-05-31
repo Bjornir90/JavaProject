@@ -36,7 +36,7 @@ public class ListWindowController extends Controller {
     public void initialize(){
         channelsButton.setOnAction(event -> switchToChannelList());
         calendarButton.setOnAction(event -> switchToCalendar());
-
+		actorButton.setOnAction(event -> switchToActorList());
 
     }
 
