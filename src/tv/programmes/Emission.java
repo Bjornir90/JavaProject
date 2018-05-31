@@ -86,4 +86,8 @@ public class Emission {
 		result = 31 * result + (rating != null ? rating.hashCode() : 0);
 		return result;
 	}
+
+	public String shortDescription(){
+		return title + " Duration : " + length;
+	}
 }

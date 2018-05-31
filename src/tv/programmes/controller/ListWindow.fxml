@@ -39,13 +39,14 @@
         </Menu>
       </menus>
     </MenuBar>
-    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
+      <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
          <children>
-            <ScrollPane layoutX="300.0" layoutY="24.0" prefHeight="774.4" prefWidth="1280.0" vbarPolicy="ALWAYS" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <ScrollPane layoutX="300.0" layoutY="-1.600000023841858" prefHeight="771.0" prefWidth="1280.0" vbarPolicy="ALWAYS" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <content>
-                  <ListView fx:id="list" prefHeight="761.0" prefWidth="1263.0" />
+                  <ListView fx:id="list" prefHeight="771.0" prefWidth="1260.0" />
                </content>
             </ScrollPane>
-         </children></AnchorPane>
+         </children>
+      </AnchorPane>
   </children>
 </VBox>

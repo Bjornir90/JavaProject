@@ -10,14 +10,14 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tv.programmes.controller.MainWindowController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tv.programmes.controller.MainWindowController">
   <children>
     <MenuBar VBox.vgrow="NEVER">
       <menus>
         <Menu mnemonicParsing="false" text="Consult">
           <items>
-            <MenuItem fx:id="channelsButton" mnemonicParsing="false" onAction="#testButton" text="Channels" />
-            <MenuItem fx:id="calendarButton" mnemonicParsing="false" onAction="#testButton" text="Calendar" />
+            <MenuItem fx:id="channelsButton" mnemonicParsing="false" text="Channels" />
+            <MenuItem fx:id="calendarButton" mnemonicParsing="false" text="Calendar" />
           </items>
         </Menu>
             <Menu mnemonicParsing="false" text="Search">
@@ -41,7 +41,7 @@
         </Menu>
       </menus>
     </MenuBar>
-    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
+      <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
          <children>
             <ScrollPane layoutX="300.0" layoutY="-1.600000023841858" vbarPolicy="ALWAYS">
                <content>
@@ -63,6 +63,7 @@
                   </GridPane>
                </content>
             </ScrollPane>
-         </children></AnchorPane>
+         </children>
+      </AnchorPane>
   </children>
 </VBox>

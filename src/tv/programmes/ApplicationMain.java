@@ -5,6 +5,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.SubScene;
 import javafx.stage.Stage;
 import tv.programmes.controller.Controller;
 
@@ -33,6 +34,8 @@ public class ApplicationMain extends Application {
 		primaryStage.setTitle("TV programmes");
 		Scene scene = new Scene(panel);
 		app.getScenes().put("MainWindow", scene);
+		app.getControllers().put("MainWindow", controller);
+		app.setRoot(primaryStage);
 		primaryStage.setScene(scene);
 		primaryStage.show();
 	}

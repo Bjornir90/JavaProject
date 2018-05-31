@@ -29,4 +29,10 @@ public class Programmation {
 	public Channel getChannel() {
 		return channel;
 	}
+
+	public String shortDescription(){
+		String desc = emission.shortDescription();
+		desc = "Start :" +startDate.toString() +" End : "+ endDate.toString() +" "+ desc;
+		return desc;
+	}
 }

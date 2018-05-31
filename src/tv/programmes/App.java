@@ -4,8 +4,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.stage.Stage;
 import tv.programmes.controller.Controller;
 import tv.programmes.controller.ListWindowController;
+import tv.programmes.model.ListWindowModel;
 import tv.programmes.utils.Parser;
 
 import javax.xml.stream.XMLInputFactory;
@@ -25,7 +27,9 @@ public class App {
     private ArrayList<Programmation> programmations;
     private ArrayList<Emission> emissions;
     private HashMap<String, Scene> scenes;
+    private HashMap<String, Controller> controllers;
     private Controller currentController;
+    private Stage root;
 
 
     public App (){
@@ -33,6 +37,7 @@ public class App {
         programmations = new ArrayList<>();
         emissions = new ArrayList<>();
         scenes = new HashMap<>();
+        controllers = new HashMap<>();
 
         XMLInputFactory xmlFactory = XMLInputFactory.newInstance();
         XMLStreamReader xmlReader = null;
@@ -68,6 +73,7 @@ public class App {
                                     if(!emissions.contains(p.getEmission())) {
                                         emissions.add(p.getEmission());
                                     }
+                                    p.getChannel().addProgrammation(p);
                                 } catch (InstantiationException e){
                                     e.printStackTrace();
                                     break;
@@ -106,9 +112,12 @@ public class App {
         FXMLLoader loader = new FXMLLoader();
         try {
             Parent parent = loader.load(getClass().getResource(viewFolder+"ListWindow.fxml").openStream());
-            Controller listController = loader.getController();
+            ListWindowController listController = loader.getController();
             listController.setApp(this);
-            scenes.put("List", new Scene(parent));
+            listController.setModel(new ListWindowModel(listController));
+            Scene listScene = new Scene(parent);
+            controllers.put("List", listController);
+            scenes.put("List", listScene);
         } catch (IOException e) {
             System.err.println("App loading error : could not find fxml file");
             e.printStackTrace();
@@ -136,11 +145,21 @@ public class App {
         return scenes;
     }
 
-    public Controller getCurrentController() {
+	public HashMap<String, Controller> getControllers() { return controllers; }
+
+	public Controller getCurrentController() {
         return currentController;
     }
 
     public void setCurrentController(Controller currentController) {
         this.currentController = currentController;
     }
+
+	public Stage getRoot() {
+		return root;
+	}
+
+	public void setRoot(Stage root) {
+		this.root = root;
+	}
 }

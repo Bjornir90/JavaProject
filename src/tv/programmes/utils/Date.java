@@ -73,4 +73,13 @@ public class Date implements Comparable{
 		}
 	}
 
+	@Override
+	public String toString() {
+		return	year +
+				"/" + month +
+				"/" + day +
+				" " + hour +
+				":" + minute +
+				":" + second;
+	}
 }

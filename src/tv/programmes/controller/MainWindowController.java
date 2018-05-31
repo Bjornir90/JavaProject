@@ -4,14 +4,16 @@ import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuItem;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 import tv.programmes.Channel;
+import tv.programmes.Programmation;
+
+import java.util.ArrayList;
 
 
 public class MainWindowController extends Controller{
@@ -25,10 +27,6 @@ public class MainWindowController extends Controller{
 	@FXML
 	private GridPane gridChannel;
 
-	@FXML
-	private void testButton(ActionEvent event){
-		System.out.println("Button was clicked : "+channelsButton.getText());
-	}
 
 	private void initializeHandlers(){
 
@@ -37,10 +35,10 @@ public class MainWindowController extends Controller{
 			public void handle(Event event) {
 				Button clickedOn = (Button) event.getSource();
 				String buttonText = clickedOn.getText();
-				System.out.println("Channel selected");
+				System.out.println("Channel selected "+buttonText);
 				for(Channel c : app.getChannels()){
 					if(c.getName().equals(buttonText)){
-                        switchToChannelScene(c, clickedOn.getScene().getWindow());
+                        switchToChannelScene(c);
 					}
 				}
 
@@ -67,11 +65,24 @@ public class MainWindowController extends Controller{
     /**
      * Switch the active scene to the channel information display
      * @param channel The channel to display
-     * @param window The window of the application
      */
-    public void switchToChannelScene(Channel channel, Window window){
-        Stage stage = (Stage) window;
-        stage.setScene(app.getScenes().get("List"));
+    public void switchToChannelScene(Channel channel){
+        Stage stage = app.getRoot();
+        Scene sceneToSwitch = app.getScenes().get("List");
+        stage.setScene(sceneToSwitch);
+        app.setCurrentController(app.getControllers().get("List"));
+
+        ArrayList<String> dataToPass = new ArrayList<>();
+        for(Programmation prog : channel.getProgrammations()){
+        	dataToPass.add(prog.shortDescription());
+	        System.out.println(prog.shortDescription());
+        }
+	    ((ListWindowController) app.getCurrentController()).getModel().setDataList(dataToPass);
         stage.show();
     }
+
+	@Override
+	public void updateScene() {
+
+	}
 }
