@@ -5,6 +5,7 @@ import tv.programmes.utils.Date;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 
 public abstract class Controller {
     protected App app;
@@ -91,6 +92,42 @@ public abstract class Controller {
 	    	dataToPass.add(c.getName());
 	    	for(String rating : numberOfRatings.get(c).keySet()){
 	    		dataToPass.add("\t"+rating+" : "+numberOfRatings.get(c).get(rating));
+		    }
+	    }
+	    controller.getModel().setDataList(dataToPass);
+    }
+
+    protected void switchToCategoryList(){
+	    app.getRoot().setScene(app.getScenes().get("List"));
+	    ListWindowController controller = (ListWindowController) app.getControllers().get("List");
+	    app.setCurrentController(controller);
+	    ArrayList<String> dataToPass = new ArrayList<>();
+	    HashMap<Date, HashMap<String, Integer>> categoriesForEachDay = new HashMap<>();
+
+
+	    ArrayList<Programmation> programmations = (ArrayList<Programmation>) app.getProgrammations().clone();//This will allow us to remove each element as it is treated, thus gaining a lot of time
+	    for(Date d : app.getDays()) {
+		    HashMap<String, Integer> categoriesForADay = new HashMap<>();
+		    for (Iterator<Programmation> iterator = programmations.iterator(); iterator.hasNext();) {
+		    	Programmation p = iterator.next();
+			    String category = p.getEmission().getCategory();
+			    Date dayForThisEmission = p.getStartDate().copyDay();//we only get the day because we want to compare only the days, not the exact time
+			    if(dayForThisEmission.isSameDay(d)) {
+				    if (categoriesForADay.containsKey(category)) {
+					    Integer numberOfCategory = categoriesForADay.get(category);
+					    categoriesForADay.replace(category, ++numberOfCategory);
+				    } else {
+					    categoriesForADay.put(category, 1);
+				    }
+				    iterator.remove();//Don't do it for each day, as a programmation can only exists for one day
+			    }
+		    }
+		    categoriesForEachDay.put(d, categoriesForADay);
+	    }
+	    for(Date d : app.getDays()){
+	    	dataToPass.add(d.getPrintableDay());
+	    	for(String category : categoriesForEachDay.get(d).keySet()){
+	    		dataToPass.add("\t"+ category +" : "+ categoriesForEachDay.get(d).get(category));
 		    }
 	    }
 	    controller.getModel().setDataList(dataToPass);

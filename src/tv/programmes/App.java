@@ -88,8 +88,7 @@ public class App {
 	                                    }
                                     }
                                     if(!alreadyExist){
-	                                    Date dayToAdd = new Date();
-	                                    dayToAdd.copyDay(p.getStartDate());
+	                                    Date dayToAdd = p.getStartDate().copyDay();
 	                                    days.add(dayToAdd);
                                     }
 

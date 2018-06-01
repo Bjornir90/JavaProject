@@ -123,12 +123,14 @@ public class Date implements Comparable{
 		return day == that.day;
 	}
 
-	public void copyDay(Date date){
-		year = date.year;
-		month = date.month;
-		day = date.day;
-		hour = 0;
-		minute = 0;
-		second = 0;
+	public Date copyDay(){
+		Date date = new Date();
+		date.year = year;
+		date.month = month;
+		date.day = day;
+		date.hour = 0;
+		date.minute = 0;
+		date.second = 0;
+		return date;
 	}
 }
