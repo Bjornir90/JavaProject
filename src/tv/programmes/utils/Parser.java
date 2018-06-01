@@ -34,7 +34,8 @@ public class Parser {
 				switch(elementName) {
 					case "category":
 						category = reader.getText();
-//						System.out.println("category = " + category);
+						if(category.contains(" "))	category = category.substring(0, category.indexOf(" "));//Remove sub categories
+						System.out.println("category = " + category);
 						break;
 					case "title":
 						title = reader.getText();

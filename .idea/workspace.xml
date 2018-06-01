@@ -3,10 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="c0a7207d-2869-4b97-8b84-dec874841bba" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tv/programmes/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tv/programmes/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tv/programmes/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tv/programmes/controller/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tv/programmes/controller/ListWindowController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tv/programmes/controller/ListWindowController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tv/programmes/utils/Date.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tv/programmes/utils/Date.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Project/tv/programmes/utils/Date.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project/tv/programmes/utils/Date.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Project/tv/programmes/utils/Parser.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project/tv/programmes/utils/Parser.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/tv/programmes/utils/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tv/programmes/utils/Parser.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -44,11 +43,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Parser.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Parser.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/tv/programmes/utils/Parser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-990">
-              <caret line="17" column="22" selection-start-line="17" selection-start-column="22" selection-end-line="17" selection-end-column="22" />
+            <state relative-caret-position="180">
+              <caret line="38" selection-start-line="38" selection-end-line="38" />
             </state>
           </provider>
         </entry>
@@ -74,11 +73,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Controller.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Controller.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/tv/programmes/controller/Controller.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="202">
-              <caret line="111" column="43" selection-start-line="111" selection-start-column="43" selection-end-line="111" selection-end-column="43" />
+            <state relative-caret-position="247">
+              <caret line="120" column="21" lean-forward="true" selection-start-line="120" selection-start-column="21" selection-end-line="120" selection-end-column="21" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -151,11 +150,11 @@
         <option value="$PROJECT_DIR$/src/tv/programmes/Role.java" />
         <option value="$PROJECT_DIR$/src/tv/programmes/controller/MainWindowController.java" />
         <option value="$PROJECT_DIR$/src/tv/programmes/ApplicationMain.java" />
-        <option value="$PROJECT_DIR$/src/tv/programmes/utils/Parser.java" />
         <option value="$PROJECT_DIR$/src/tv/programmes/utils/Date.java" />
         <option value="$PROJECT_DIR$/src/tv/programmes/controller/ListWindowController.java" />
         <option value="$PROJECT_DIR$/src/tv/programmes/App.java" />
         <option value="$PROJECT_DIR$/src/tv/programmes/controller/Controller.java" />
+        <option value="$PROJECT_DIR$/src/tv/programmes/utils/Parser.java" />
       </list>
     </option>
   </component>
@@ -383,7 +382,14 @@
       <option name="project" value="LOCAL" />
       <updated>1527802427276</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Added categories list, and a few changes to the way Date.copyDay works">
+      <created>1527842182248</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1527842182248</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -395,11 +401,11 @@
       <window_info anchor="right" id="Palette&#9;" order="7" />
       <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.50208336" side_tool="true" weight="0.32928178" />
       <window_info anchor="right" id="Maven Projects" order="6" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49583334" visible="true" weight="0.32917318" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49583334" visible="true" weight="0.32917318" />
       <window_info anchor="bottom" id="Version Control" order="9" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info id="Designer" order="2" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17935579" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17935579" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
@@ -460,7 +466,8 @@
     <MESSAGE value="Generate actors list, switch to correct scene to display it" />
     <MESSAGE value="Remove the character the actor play has, so we really have an actors list" />
     <MESSAGE value="Ratings list done" />
-    <option name="LAST_COMMIT_MESSAGE" value="Ratings list done" />
+    <MESSAGE value="Added categories list, and a few changes to the way Date.copyDay works" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added categories list, and a few changes to the way Date.copyDay works" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -758,13 +765,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/tv/programmes/utils/Parser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-990">
-          <caret line="17" column="22" selection-start-line="17" selection-start-column="22" selection-end-line="17" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/tv/programmes/utils/Date.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="510">
@@ -794,6 +794,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/tv/programmes/controller/Controller.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="120" column="21" lean-forward="true" selection-start-line="120" selection-start-column="21" selection-end-line="120" selection-end-column="21" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/tv/programmes/ApplicationMain.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="230">
@@ -804,13 +814,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/tv/programmes/controller/Controller.java">
+    <entry file="file://$PROJECT_DIR$/src/tv/programmes/utils/Parser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="202">
-          <caret line="111" column="43" selection-start-line="111" selection-start-column="43" selection-end-line="111" selection-end-column="43" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="180">
+          <caret line="38" selection-start-line="38" selection-end-line="38" />
         </state>
       </provider>
     </entry>
