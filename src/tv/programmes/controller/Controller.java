@@ -4,6 +4,7 @@ import tv.programmes.*;
 import tv.programmes.utils.Date;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Iterator;
 
@@ -130,6 +131,44 @@ public abstract class Controller {
 	    		dataToPass.add("\t"+ category +" : "+ categoriesForEachDay.get(d).get(category));
 		    }
 	    }
+	    controller.getModel().setDataList(dataToPass);
+    }
+
+    protected void switchToSortedChannelList(){
+	    app.getRoot().setScene(app.getScenes().get("List"));
+	    ListWindowController controller = (ListWindowController) app.getControllers().get("List");
+	    app.setCurrentController(controller);
+    	int currentYear = Calendar.getInstance().get(Calendar.YEAR);
+    	HashMap<Channel, Integer> mediumAgeForEachChannel = new HashMap<>();
+    	ArrayList<String> dataToPass = new ArrayList<>();
+
+
+    	for(Channel c : app.getChannels()){
+    		int sumOfAge= 0, numberOfFilms = 0;
+    		for(Programmation p : c.getProgrammations()){
+				if(p.getEmission().getCategory().equals("film") && p.getEmission().getYearOfRelease() != 0){
+					numberOfFilms++;
+					sumOfAge += currentYear - p.getEmission().getYearOfRelease();
+				}
+		    }
+		    int mediumAge = (numberOfFilms != 0)? Math.round(sumOfAge/numberOfFilms):0;
+		    mediumAgeForEachChannel.put(c, mediumAge);
+	    }
+
+
+	    while(!mediumAgeForEachChannel.isEmpty()) {
+	    	Channel currentHighestChannel = (Channel) mediumAgeForEachChannel.keySet().toArray()[0];
+		    for (Channel c : mediumAgeForEachChannel.keySet()){
+			    if (mediumAgeForEachChannel.get(c) > mediumAgeForEachChannel.get(currentHighestChannel)) {
+				    currentHighestChannel = c;
+			    }
+		    }
+		    //System.out.println(" currentHighestChannel.getName() = " + currentHighestChannel.getName()+"\n size = "+channels.size());
+		    dataToPass.add(currentHighestChannel.getName()+" medium age of movies : "+mediumAgeForEachChannel.get(currentHighestChannel)+" years");
+		    mediumAgeForEachChannel.remove(currentHighestChannel);
+	    }
+
+
 	    controller.getModel().setDataList(dataToPass);
     }
 }

@@ -39,6 +39,7 @@ public class ListWindowController extends Controller {
 		actorButton.setOnAction(event -> switchToActorList());
 		ratingButton.setOnAction(event -> switchToRatingList());
 		categorieButton.setOnAction(event -> switchToCategoryList());
+		orderedChannelButton.setOnAction(event -> switchToSortedChannelList());
     }
 
 	@Override
