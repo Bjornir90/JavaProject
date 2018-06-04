@@ -87,6 +87,10 @@ public class Emission {
 		return result;
 	}
 
+	/**
+	 * Creates a short description of the emission, for easy displaying.
+	 * @return the description
+	 */
 	public String shortDescription(){
 		return title + " Duration : " + length;
 	}

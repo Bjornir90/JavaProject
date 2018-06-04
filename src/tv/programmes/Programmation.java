@@ -30,6 +30,10 @@ public class Programmation {
 		return channel;
 	}
 
+	/**
+	 * Creates a short description of the programmation, for easy displaying.
+	 * @return the description
+	 */
 	public String shortDescription(){
 		String desc = emission.shortDescription();
 		desc = "Start :" +startDate.toString() +" End : "+ endDate.toString() +" "+ desc;

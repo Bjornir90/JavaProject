@@ -16,6 +16,10 @@ public class Role {
 		return role;
 	}
 
+	/**
+	 * For easy checking if this role is an actor.
+	 * @return true if the role is an actor, false otherwise
+	 */
 	public boolean isActor(){
 		return role.equals("actor");
 	}

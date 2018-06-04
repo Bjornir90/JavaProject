@@ -19,10 +19,18 @@ public class PopUpControllerCredit {
 		init();
 	}
 
+	/**
+	 * Simply sets an event handler for the validate button of the popup.
+	 */
 	private void init(){
 		validate.setOnMouseClicked(event -> passInformation());
 	}
 
+	/**
+	 * Called when the user has validated it's input.
+	 * It pass the inputs to the controller, so it can switch scene.
+	 * It closes the popup.
+	 */
 	private void passInformation(){
 		String data = input.getText();
 		if(data.isEmpty()){

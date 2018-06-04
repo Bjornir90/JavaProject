@@ -9,6 +9,15 @@ import java.util.ArrayList;
 
 public class Parser {
 
+	/**
+	 * Parse an emission. It should be called when the corresponding balise has been found.
+	 *
+	 * @param reader The reader of the xml file
+	 * @param channels The list of channels, should not be empty or null
+	 * @return The programmation found in the xml file
+	 * @throws XMLStreamException in case of an error during reading the file
+	 * @throws InstantiationException if it can't create an instance of programmation
+	 */
 	public static Programmation parseEmission(XMLStreamReader reader, ArrayList<Channel> channels) throws XMLStreamException, InstantiationException{
 		String category = null;
 		String title = null;
@@ -75,17 +84,6 @@ public class Parser {
 
 							credits.add(new Role(name, job));
 						}
-						/*while(reader.hasNext()){
-							if(event == XMLEvent.START_ELEMENT){
-								System.out.println("Start reader.getLocalName() = " + reader.getLocalName());
-							} else if(event == XMLEvent.CHARACTERS){
-								System.out.println("reader.getText() = " + reader.getText());
-							} else if(event == XMLEvent.END_ELEMENT){
-								if(reader.getLocalName().equals("credits")) break;
-								System.out.println("End reader.getLocalName() = " + reader.getLocalName());
-							}
-							event = reader.next();
-						}*/
 						break;
 					case "rating":
 						event = reader.next();
@@ -120,6 +118,14 @@ public class Parser {
 		return new Programmation(startDate, endDate, emission, channelInstance);
 	}
 
+	/**
+	 * Parse a channel. Should be called when the correponding balise has been found
+	 *
+	 * @param reader the xmlreader for the xml file
+	 * @return  the channel found in the cml file
+	 * @throws XMLParsingException if the xml file is malformed
+	 * @throws XMLStreamException if the xml file can't be read
+	 */
 	public static Channel parseChannel(XMLStreamReader reader) throws XMLParsingException, XMLStreamException {
 		int event = reader.getEventType();
 		String id;

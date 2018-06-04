@@ -34,6 +34,10 @@ public class App {
     private Stage root;
 
 
+    /**
+     * Open the xml file, and goes through it, calling the appropriate method from the Parser class chan it finds a channel or emission balise.
+     * Populates channels, programmations, emissions and days lists;
+     */
     public App (){
         channels = new ArrayList<>();
         programmations = new ArrayList<>();
@@ -144,6 +148,9 @@ public class App {
         }
     }
 
+	/**
+	 * @return the path to the fxml folder, containing all scenes.
+	 */
     public static String getViewFolder() {
         return viewFolder;
     }

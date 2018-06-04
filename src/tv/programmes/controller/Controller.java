@@ -26,12 +26,18 @@ public abstract class Controller {
         this.app = app;
     }
 
+	/**
+	 * Switch to view MainWindowWindow to display the list of all channels.
+	 */
     protected void switchToChannelList(){
 		app.getRoot().setScene(app.getScenes().get("MainWindow"));
 	    app.setCurrentController(app.getControllers().get("MainWindow"));
 	    app.getRoot().show();
     }
 
+	/**
+	 * Switch to a listView, to display all days found in the xml file
+	 */
     protected void switchToCalendar(){
 		app.getRoot().setScene(app.getScenes().get("List"));
 		ListWindowController controller = (ListWindowController) app.getControllers().get("List");
@@ -43,6 +49,9 @@ public abstract class Controller {
 		controller.getModel().setDataList(dataToPass);
     }
 
+	/**
+	 * Switch to a listview, to display the list of actors, sorted by number of time credited in every emission
+	 */
     protected void switchToActorList(){
     	app.getRoot().setScene(app.getScenes().get("List"));
     	ListWindowController controller = (ListWindowController) app.getControllers().get("List");
@@ -76,6 +85,9 @@ public abstract class Controller {
 	    controller.getModel().setDataList(dataToPass);
     }
 
+	/**
+	 * Switch to listView to display the number of emission that has a certain rating per channel
+	 */
     protected void switchToRatingList(){
 	    app.getRoot().setScene(app.getScenes().get("List"));
 	    ListWindowController controller = (ListWindowController) app.getControllers().get("List");
@@ -106,6 +118,9 @@ public abstract class Controller {
 	    controller.getModel().setDataList(dataToPass);
     }
 
+	/**
+	 * Switch to a listVie to display the number of emissions of a certain category, per day. It retrieves the list of days from the app.
+	 */
     protected void switchToCategoryList(){
 	    app.getRoot().setScene(app.getScenes().get("List"));
 	    ListWindowController controller = (ListWindowController) app.getControllers().get("List");
@@ -142,6 +157,10 @@ public abstract class Controller {
 	    controller.getModel().setDataList(dataToPass);
     }
 
+	/**
+	 * Switch to a listView to display the list of channels, but sorted by the medium age of films for the channel.
+	 * The oldest the movies shown in a channel, the higher on the list the channel.
+	 */
     protected void switchToSortedChannelList(){
 	    app.getRoot().setScene(app.getScenes().get("List"));
 	    ListWindowController controller = (ListWindowController) app.getControllers().get("List");
@@ -180,6 +199,11 @@ public abstract class Controller {
 	    controller.getModel().setDataList(dataToPass);
     }
 
+	/**
+	 * Internal function that is used to reuse a bit of code. It creates a new Stage, set it's owner as the app's root, and makes it modal.
+	 * The goals is to have a popup.
+	 * @return The Stage created.
+	 */
     private Stage createPopup(){
 	    Stage popupStage = new Stage();
 	    popupStage.initOwner(app.getRoot());
@@ -187,6 +211,10 @@ public abstract class Controller {
 	    return popupStage;
     }
 
+	/**
+	 * Creates a popup using createPopup(), instantiates it's controller, creates every elements of the popup and display them.
+	 * Made specifically to ask for the name of someone.
+	 */
 	protected void createPopupCredit(){
 		TextField input = new TextField();
 		Button validateButton = new Button("Search");
@@ -199,6 +227,10 @@ public abstract class Controller {
 		PopUpControllerCredit popUpController = new PopUpControllerCredit(input, validateButton, this, popupStage);
 	}
 
+	/**
+	 * Creates a popup using createPopup(), instantiates it's controller, creates every elements of the popup and display them.
+	 * Made specifically to ask for the day and the month.
+	 */
 	protected void createPopupPeriod(){
 		TextField dayInput = new TextField();
 		TextField monthInput = new TextField();
@@ -214,6 +246,10 @@ public abstract class Controller {
 		PopUpControllerPeriod popUpControllerPeriod = new PopUpControllerPeriod(dayInput, monthInput, validateButton, this, popupStage);
 	}
 
+	/**
+	 * Switch to a listView to display every emission that has name in the credit.
+	 * @param name the name to search for in the emission's credits.
+	 */
 	protected void switchToFindByCredit(String name){
 		app.getRoot().setScene(app.getScenes().get("List"));
 		ListWindowController controller = (ListWindowController) app.getControllers().get("List");
@@ -230,6 +266,11 @@ public abstract class Controller {
 		controller.getModel().setDataList(dataToPass);
 	}
 
+	/**
+	 * Switch to a listView to display every programmations that is on the same day as entered by the user.
+	 * @param day The day to search for
+	 * @param month The month to search for
+	 */
 	protected void switchToFindByPeriod(int day, int month){
 		app.getRoot().setScene(app.getScenes().get("List"));
 		ListWindowController controller = (ListWindowController) app.getControllers().get("List");

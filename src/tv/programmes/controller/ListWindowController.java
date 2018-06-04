@@ -35,6 +35,9 @@ public class ListWindowController extends Controller {
 	private MenuItem periodButton;
 
 
+	/**
+	 * Set EventHandler for all buttons in the interface
+	 */
     @FXML
     public void initialize(){
         channelsButton.setOnAction(event -> switchToChannelList());
@@ -47,6 +50,9 @@ public class ListWindowController extends Controller {
 	    periodButton.setOnAction(event -> createPopupPeriod());
     }
 
+	/**
+	 * Set listView content from the data in the model
+	 */
 	@Override
     public void updateScene(){
 	    ObservableList<String> data = FXCollections.observableArrayList();

@@ -41,13 +41,14 @@ public class MainWindowController extends Controller{
 	private MenuItem periodButton;
 
 
-
+	/**
+	 * Set the event handler for every buttons in the interface.
+	 */
 	private void initializeHandlers(){
 
 		channelButtonHandler = event -> {
 			Button clickedOn = (Button) event.getSource();
 			String buttonText = clickedOn.getText();
-			System.out.println("Channel selected "+buttonText);
 			for(Channel c : app.getChannels()){
 				if(c.getName().equals(buttonText)){
 					switchToChannelScene(c);
@@ -67,6 +68,10 @@ public class MainWindowController extends Controller{
 	}
 
 	@FXML
+	/**
+	 * Calls initializeHandlers();
+	 * Populates the gridPane with a button for each channel.
+	 */
 	public void initialize(){
 		if(app != null) {
 			initializeHandlers();
