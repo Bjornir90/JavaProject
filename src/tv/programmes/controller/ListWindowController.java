@@ -29,7 +29,10 @@ public class ListWindowController extends Controller {
 	private MenuItem ratingButton;
 	@FXML
 	private MenuItem orderedChannelButton;
-
+	@FXML
+	private MenuItem creditButton;
+	@FXML
+	private MenuItem periodButton;
 
 
     @FXML
@@ -40,6 +43,8 @@ public class ListWindowController extends Controller {
 		ratingButton.setOnAction(event -> switchToRatingList());
 		categorieButton.setOnAction(event -> switchToCategoryList());
 		orderedChannelButton.setOnAction(event -> switchToSortedChannelList());
+	    creditButton.setOnAction(event -> createPopupCredit());
+	    periodButton.setOnAction(event -> createPopupPeriod());
     }
 
 	@Override

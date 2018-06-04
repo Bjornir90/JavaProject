@@ -4,6 +4,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -198,6 +199,21 @@ public abstract class Controller {
 		PopUpControllerCredit popUpController = new PopUpControllerCredit(input, validateButton, this, popupStage);
 	}
 
+	protected void createPopupPeriod(){
+		TextField dayInput = new TextField();
+		TextField monthInput = new TextField();
+		Button validateButton = new Button("Search");
+		VBox popupBox = new VBox(15);
+		HBox inputsBox = new HBox(5);
+		inputsBox.getChildren().addAll(dayInput, monthInput);
+		popupBox.getChildren().addAll(new Label("Enter period (dd MM) :"), inputsBox, validateButton);
+		Stage popupStage = createPopup();
+		Scene popupScene = new Scene(popupBox, 200, 120);
+		popupStage.setScene(popupScene);
+		popupStage.show();
+		PopUpControllerPeriod popUpControllerPeriod = new PopUpControllerPeriod(dayInput, monthInput, validateButton, this, popupStage);
+	}
+
 	protected void switchToFindByCredit(String name){
 		app.getRoot().setScene(app.getScenes().get("List"));
 		ListWindowController controller = (ListWindowController) app.getControllers().get("List");
@@ -207,14 +223,28 @@ public abstract class Controller {
 		for(Emission e : app.getEmissions()){
 			for(Role role : e.getCredits()){
 				if(role.getName().contains(name)){
-					dataToPass.add(role.getName() +" is credited in " +e.shortDescription());
+					dataToPass.add(role.getName() +" is credited as "+role.getRole()+" in " +e.shortDescription());
 				}
 			}
 		}
 		controller.getModel().setDataList(dataToPass);
 	}
 
-	protected void switchToFindByPeriod(){
+	protected void switchToFindByPeriod(int day, int month){
+		app.getRoot().setScene(app.getScenes().get("List"));
+		ListWindowController controller = (ListWindowController) app.getControllers().get("List");
+		app.setCurrentController(controller);
+		ArrayList<String> dataToPass = new ArrayList<>();
 
+    	Date toSearch = new Date();
+    	toSearch.setDay(day);
+    	toSearch.setMonth(month);
+    	toSearch.setYear(Calendar.getInstance().get(Calendar.YEAR));
+		for(Programmation p : app.getProgrammations()){
+			if(p.getStartDate().isSameDay(toSearch)){
+				dataToPass.add(p.shortDescription());
+			}
+		}
+		controller.getModel().setDataList(dataToPass);
 	}
 }

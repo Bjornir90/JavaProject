@@ -35,7 +35,6 @@ public class Parser {
 					case "category":
 						category = reader.getText();
 						if(category.contains(" "))	category = category.substring(0, category.indexOf(" "));//Remove sub categories
-						System.out.println("category = " + category);
 						break;
 					case "title":
 						title = reader.getText();

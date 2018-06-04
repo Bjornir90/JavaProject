@@ -62,7 +62,7 @@ public class MainWindowController extends Controller{
 		ratingButton.setOnAction(event -> switchToRatingList());
 		orderedChannelButton.setOnAction(event -> switchToSortedChannelList());
 		creditButton.setOnAction(event -> createPopupCredit());
-//		periodButton.setOnAction(event -> createPopupPeriod());
+		periodButton.setOnAction(event -> createPopupPeriod());
 
 	}
 
