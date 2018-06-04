@@ -35,6 +35,10 @@ public class MainWindowController extends Controller{
 	private MenuItem ratingButton;
 	@FXML
 	private MenuItem orderedChannelButton;
+	@FXML
+	private MenuItem creditButton;
+	@FXML
+	private MenuItem periodButton;
 
 
 
@@ -56,8 +60,9 @@ public class MainWindowController extends Controller{
 		calendarButton.setOnAction(event -> switchToCalendar());
 		actorButton.setOnAction(event -> switchToActorList());
 		ratingButton.setOnAction(event -> switchToRatingList());
-
-
+		orderedChannelButton.setOnAction(event -> switchToSortedChannelList());
+		creditButton.setOnAction(event -> createPopupCredit());
+//		periodButton.setOnAction(event -> createPopupPeriod());
 
 	}
 

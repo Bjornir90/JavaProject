@@ -1,5 +1,12 @@
 package tv.programmes.controller;
 
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.VBox;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import tv.programmes.*;
 import tv.programmes.utils.Date;
 
@@ -171,4 +178,43 @@ public abstract class Controller {
 
 	    controller.getModel().setDataList(dataToPass);
     }
+
+    private Stage createPopup(){
+	    Stage popupStage = new Stage();
+	    popupStage.initOwner(app.getRoot());
+	    popupStage.initModality(Modality.APPLICATION_MODAL);
+	    return popupStage;
+    }
+
+	protected void createPopupCredit(){
+		TextField input = new TextField();
+		Button validateButton = new Button("Search");
+		VBox popupBox = new VBox(20);
+		popupBox.getChildren().addAll(new Label("Enter name :"), input, validateButton);
+		Scene popupScene = new Scene(popupBox, 200, 120);
+		Stage popupStage = createPopup();
+		popupStage.setScene(popupScene);
+		popupStage.show();
+		PopUpControllerCredit popUpController = new PopUpControllerCredit(input, validateButton, this, popupStage);
+	}
+
+	protected void switchToFindByCredit(String name){
+		app.getRoot().setScene(app.getScenes().get("List"));
+		ListWindowController controller = (ListWindowController) app.getControllers().get("List");
+		app.setCurrentController(controller);
+		ArrayList<String> dataToPass = new ArrayList<>();
+
+		for(Emission e : app.getEmissions()){
+			for(Role role : e.getCredits()){
+				if(role.getName().contains(name)){
+					dataToPass.add(role.getName() +" is credited in " +e.shortDescription());
+				}
+			}
+		}
+		controller.getModel().setDataList(dataToPass);
+	}
+
+	protected void switchToFindByPeriod(){
+
+	}
 }

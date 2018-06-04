@@ -22,8 +22,8 @@
         </Menu>
             <Menu mnemonicParsing="false" text="Search">
               <items>
-                <MenuItem mnemonicParsing="false" text="Find by period" />
-                  <MenuItem mnemonicParsing="false" text="Find by credits" />
+                <MenuItem fx:id="periodButton" mnemonicParsing="false" text="Find by period" />
+                  <MenuItem fx:id="creditButton" mnemonicParsing="false" text="Find by credits" />
               </items>
             </Menu>
         <Menu mnemonicParsing="false" text="Analysis">
@@ -33,11 +33,6 @@
                   <MenuItem fx:id="ratingButton" mnemonicParsing="false" text="CSA ratings list" />
                   <MenuItem fx:id="orderedChannelButton" mnemonicParsing="false" text="Channels list" />
                </items>
-        </Menu>
-        <Menu mnemonicParsing="false" text="Help">
-          <items>
-            <MenuItem mnemonicParsing="false" text="About MyHelloApp" />
-          </items>
         </Menu>
       </menus>
     </MenuBar>

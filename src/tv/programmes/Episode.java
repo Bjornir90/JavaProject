@@ -60,4 +60,11 @@ public class Episode extends Emission{
 		result = 31 * result + part;
 		return result;
 	}
+
+	@Override
+	public String shortDescription(){
+		String description = super.shortDescription();
+		description += " Episode n°"+episode+" Season n°"+season;
+		return description;
+	}
 }
