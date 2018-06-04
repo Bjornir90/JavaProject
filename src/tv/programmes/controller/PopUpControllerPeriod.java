@@ -31,10 +31,20 @@ public class PopUpControllerPeriod {
 				return null;
 			}
 		}));
+		inputMonth.setTextFormatter(new TextFormatter<>(c-> {
+			if (c.getControlNewText().isEmpty()) return c;
+			if (c.getControlNewText().matches("\\d*")) {
+				return c;
+			} else {
+				return null;
+			}
+		}));
 	}
 
 	private void passInformation(){
 		String day = inputDay.getText(), month = inputMonth.getText();
+		day = day.substring(0, 2);
+		month = month.substring(0, 2);
 		if(day.isEmpty() || month.isEmpty()){
 			return;
 		}
